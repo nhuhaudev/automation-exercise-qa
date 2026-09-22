@@ -1,0 +1,230 @@
+﻿Test Case ID,Epic ID,Epic,Story ID,Story,AC Ref,Scenario,Test Case Title,Precondition,Test Steps,Test Data,Expected Result,Priority,Test Type,Automation Candidate,Auto Priority,Source Case,Source URL
+TC-AUTH-001,AEQA-1,Authentication & Account Management,AEQA-8,User Registration,"AC1, AC2",Register with valid information,Verify a new user can register successfully,"User is logged out.
+Email address has not been registered before.","1. Open Automation Exercise.
+2. Verify Home page is visible.
+3. Click 'Signup / Login'.
+4. Verify 'New User Signup!' is visible.
+5. Enter valid name and unique email.
+6. Click 'Signup'.
+7. Verify 'ENTER ACCOUNT INFORMATION' is visible.
+8. Fill required account information.
+9. Fill required address information.
+10. Click 'Create Account'.
+11. Verify 'ACCOUNT CREATED!'.
+12. Click 'Continue'.
+13. Verify 'Logged in as <username>'.",Use TD-REGISTER. Use a fresh TD-REGISTER Email (test001/test002/test003...).,"Account is created successfully.
+'ACCOUNT CREATED!' is displayed.
+After Continue, user is logged in and 'Logged in as <username>' is displayed.",High,Positive / Functional,Yes,P1,UI Test Case 1,https://www.automationexercise.com/test_cases
+TC-AUTH-002,AEQA-1,Authentication & Account Management,AEQA-8,User Registration,AC3,Register with existing email,Verify registration is rejected for an existing email,"A registered account already exists.
+User is logged out.","1. Open Automation Exercise.
+2. Click 'Signup / Login'.
+3. Verify 'New User Signup!' is visible.
+4. Enter a name.
+5. Enter an already registered email.
+6. Click 'Signup'.",Use TD-EXISTING.,"Registration does not continue.
+'Email Address already exist!' is displayed.",High,Negative / Functional,Yes,P2,UI Test Case 5,https://www.automationexercise.com/test_cases
+TC-AUTH-003,AEQA-1,Authentication & Account Management,AEQA-8,User Registration,Derived,Validate required signup fields,Verify signup cannot continue when Name is empty,User is on the Signup / Login page.,"1. Leave Name empty.
+2. Enter a valid new email.
+3. Click 'Signup'.","Use TD-REGISTER, but leave Name blank. Use a fresh Email.",Signup does not continue and required-field validation prevents submission.,Medium,Negative / Validation,Later,P3,Exploratory validation derived from form constraints,https://www.automationexercise.com/test_cases
+TC-AUTH-004,AEQA-1,Authentication & Account Management,AEQA-8,User Registration,Derived,Validate required signup fields,Verify signup cannot continue when Email is empty,User is on the Signup / Login page.,"1. Enter a valid name.
+2. Leave Email empty.
+3. Click 'Signup'.",Use TD-REGISTER Name; leave Email blank.,Signup does not continue and required-field validation prevents submission.,Medium,Negative / Validation,Later,P3,Exploratory validation derived from form constraints,https://www.automationexercise.com/test_cases
+TC-AUTH-005,AEQA-1,Authentication & Account Management,AEQA-8,User Registration,Derived,Validate email format,Verify signup rejects an invalid email format,User is on the Signup / Login page.,"1. Enter a valid name.
+2. Enter an invalid email format such as 'testemail'.
+3. Click 'Signup'.",Use TD-REGISTER Name + TD-NEGATIVE Invalid Email Format.,Signup does not continue with an invalid email format.,Medium,Negative / Validation,Later,P3,Exploratory validation derived from form constraints,https://www.automationexercise.com/test_cases
+TC-AUTH-006,AEQA-1,Authentication & Account Management,AEQA-9,User Login,AC1,Login with valid credentials,Verify registered user can login with valid credentials,"A registered account exists.
+User is logged out.","1. Open Automation Exercise.
+2. Click 'Signup / Login'.
+3. Verify 'Login to your account' is visible.
+4. Enter registered email and correct password.
+5. Click 'Login'.",Use TD-EXISTING.,Login succeeds and 'Logged in as <username>' is displayed.,High,Positive / Functional,Yes,P1,UI Test Case 2,https://www.automationexercise.com/test_cases
+TC-AUTH-007,AEQA-1,Authentication & Account Management,AEQA-9,User Login,AC2,Login with invalid credentials,Verify login fails with invalid email and valid password,User is logged out.,"1. Open Signup / Login page.
+2. Enter an unregistered email.
+3. Enter a valid-format password.
+4. Click 'Login'.",Use TD-NEGATIVE Unregistered Email + TD-EXISTING Password.,User is not logged in and 'Your email or password is incorrect!' is displayed.,High,Negative / Functional,Yes,P2,UI Test Case 3,https://www.automationexercise.com/test_cases
+TC-AUTH-008,AEQA-1,Authentication & Account Management,AEQA-9,User Login,AC2,Login with invalid credentials,Verify login fails with valid email and invalid password,"A registered account exists.
+User is logged out.","1. Open Signup / Login page.
+2. Enter registered email.
+3. Enter incorrect password.
+4. Click 'Login'.",Use TD-EXISTING Email + TD-NEGATIVE Wrong Password.,User is not logged in and 'Your email or password is incorrect!' is displayed.,High,Negative / Functional,Later,P3,UI Test Case 3,https://www.automationexercise.com/test_cases
+TC-AUTH-009,AEQA-1,Authentication & Account Management,AEQA-9,User Login,Derived,Validate required login fields,Verify login cannot continue when Email is empty,User is on the Signup / Login page.,"1. Leave Email empty.
+2. Enter a password.
+3. Click 'Login'.",Leave Email blank + use TD-EXISTING Password.,Login does not continue and required-field validation prevents submission.,Medium,Negative / Validation,Later,P3,Exploratory validation derived from form constraints,https://www.automationexercise.com/test_cases
+TC-AUTH-010,AEQA-1,Authentication & Account Management,AEQA-9,User Login,Derived,Validate required login fields,Verify login cannot continue when Password is empty,User is on the Signup / Login page.,"1. Enter a registered email.
+2. Leave Password empty.
+3. Click 'Login'.",Use TD-EXISTING Email + leave Password blank.,Login does not continue and required-field validation prevents submission.,Medium,Negative / Validation,Later,P3,Exploratory validation derived from form constraints,https://www.automationexercise.com/test_cases
+TC-AUTH-011,AEQA-1,Authentication & Account Management,AEQA-10,User Logout,AC1,Logout authenticated user,Verify a logged-in user can logout successfully,User is logged in.,"1. Verify 'Logged in as <username>' is visible.
+2. Click 'Logout'.",Use TD-EXISTING.,"User is logged out, redirected to Signup / Login page, and authenticated user state is no longer shown.",High,Positive / Functional,Yes,P1,UI Test Case 4,https://www.automationexercise.com/test_cases
+TC-AUTH-012,AEQA-1,Authentication & Account Management,AEQA-11,Account Deletion,AC1,Delete authenticated account,Verify a logged-in user can delete the account,User is logged in with a disposable test account.,"1. Verify user is logged in.
+2. Click 'Delete Account'.
+3. Verify deletion confirmation.",Use TD-REGISTER with the next fresh email. Keep these credentials for TC-AUTH-013.,Account is deleted successfully and 'ACCOUNT DELETED!' is displayed.,High,Positive / Functional,Yes,P1,UI Test Case 1 / account cleanup step,https://www.automationexercise.com/test_cases
+TC-AUTH-013,AEQA-1,Authentication & Account Management,AEQA-11,Account Deletion,Derived,Verify account lifecycle after deletion,Verify deleted account cannot login again,A disposable account was deleted successfully.,"1. Open Signup / Login page.
+2. Enter the deleted account email and password.
+3. Click 'Login'.",Use the disposable credentials created and deleted in TC-AUTH-012.,User is not logged in and the invalid-credentials error is displayed.,High,Negative / Regression,Later,P3,Derived lifecycle regression,https://www.automationexercise.com/test_cases
+TC-PROD-001,AEQA-2,Product Catalog & Discovery,AEQA-12,View Product Catalog,AC1,View product catalog,Verify user can open the Products page,User is on the Home page.,"1. Click 'Products'.
+2. Observe the destination page.",N/A,User is navigated to the ALL PRODUCTS page successfully.,High,Positive / Functional,Later,P3,UI Test Case 8,https://www.automationexercise.com/test_cases
+TC-PROD-002,AEQA-2,Product Catalog & Discovery,AEQA-12,View Product Catalog,AC1,View product catalog,Verify available products are visible on the Products page,User is on the ALL PRODUCTS page.,1. Observe the product list.,N/A,The products list is visible and contains available products.,High,Positive / UI,Later,P3,UI Test Case 8,https://www.automationexercise.com/test_cases
+TC-PROD-003,AEQA-2,Product Catalog & Discovery,AEQA-13,View Product Details,AC1,View product details,Verify user can open the first product detail page,User is on the ALL PRODUCTS page.,1. Click 'View Product' for the first product.,First visible product,User lands on the Product Detail page.,High,Positive / Functional,Later,P3,UI Test Case 8,https://www.automationexercise.com/test_cases
+TC-PROD-004,AEQA-2,Product Catalog & Discovery,AEQA-13,View Product Details,AC1,View product details,Verify core product information is displayed,User is on a Product Detail page.,"1. Verify product name.
+2. Verify category.
+3. Verify price.
+4. Verify availability.
+5. Verify condition.
+6. Verify brand.",Any available product,"Name, category, price, availability, condition, and brand are all visible.",High,Positive / UI,Yes,P1,UI Test Case 8,https://www.automationexercise.com/test_cases
+TC-PROD-005,AEQA-2,Product Catalog & Discovery,AEQA-14,Search Products,AC1,Search with product keyword,Verify search returns products related to 'top',User is on the ALL PRODUCTS page.,"1. Enter 'top' in the search input.
+2. Click Search.
+3. Verify 'SEARCHED PRODUCTS'.
+4. Review returned products.",Use TD-SEARCH Keyword 1.,'SEARCHED PRODUCTS' is visible and returned products are related to the search keyword.,High,Positive / Functional,Yes,P1,UI Test Case 9,https://www.automationexercise.com/test_cases
+TC-PROD-006,AEQA-2,Product Catalog & Discovery,AEQA-14,Search Products,AC1,Search with product keyword,Verify search works with another supported keyword,User is on the ALL PRODUCTS page.,"1. Enter 'jean' in the search input.
+2. Click Search.
+3. Verify searched products.",Use TD-SEARCH Keyword 2.,Searched products section is displayed and matching products are shown.,Medium,Positive / Data-driven,Later,P3,UI Test Case 9,https://www.automationexercise.com/test_cases
+TC-PROD-007,AEQA-2,Product Catalog & Discovery,AEQA-15,Browse Products by Category,AC1,Browse a product category,Verify products can be viewed by Women category and subcategory,Categories are visible on the left sidebar.,"1. Click 'Women'.
+2. Click a Women subcategory such as 'Dress'.
+3. Observe the category page and products.","Category: Women
+Subcategory: Dress",Selected category page is displayed and products for the selected category are shown.,High,Positive / Functional,Yes,P1,UI Test Case 18,https://www.automationexercise.com/test_cases
+TC-PROD-008,AEQA-2,Product Catalog & Discovery,AEQA-15,Browse Products by Category,AC2,Switch product category,Verify user can switch from Women to a Men subcategory,User is viewing a Women category page.,"1. Select a subcategory under 'Men'.
+2. Observe the destination page.","Category: Men
+Any available subcategory",User is navigated to the selected Men category page and its products are displayed.,Medium,Positive / Functional,Later,P3,UI Test Case 18,https://www.automationexercise.com/test_cases
+TC-PROD-009,AEQA-2,Product Catalog & Discovery,AEQA-16,Browse Products by Brand,AC1,Browse products by brand,Verify user can view products for a selected brand,User is on the Products page and Brands are visible.,"1. Click any brand name.
+2. Observe the brand page.",Use any visible brand.,User is navigated to the selected brand page and brand products are displayed.,High,Positive / Functional,Yes,P1,UI Test Case 19,https://www.automationexercise.com/test_cases
+TC-PROD-010,AEQA-2,Product Catalog & Discovery,AEQA-16,Browse Products by Brand,AC2,Switch brand,Verify user can switch from one brand to another,User is viewing products for one brand.,"1. Click another brand link.
+2. Observe the destination page.",Use a second visible brand.,User is navigated to the newly selected brand page and corresponding products are displayed.,Medium,Positive / Functional,Later,P3,UI Test Case 19,https://www.automationexercise.com/test_cases
+TC-PROD-011,AEQA-2,Product Catalog & Discovery,AEQA-17,Submit Product Review,AC1,Submit product review,Verify a valid product review can be submitted,User is on a Product Detail page and 'Write Your Review' is visible.,"1. Enter name.
+2. Enter email.
+3. Enter review text.
+4. Click 'Submit'.",Use TD-REVIEW.,Review is submitted and 'Thank you for your review.' is displayed.,Medium,Positive / Functional,Later,P3,UI Test Case 21,https://www.automationexercise.com/test_cases
+TC-PROD-012,AEQA-2,Product Catalog & Discovery,AEQA-17,Submit Product Review,Derived,Validate review form,Verify review is not submitted when required email is empty,User is on a Product Detail page.,"1. Enter name.
+2. Leave email empty.
+3. Enter review text.
+4. Click 'Submit'.","Use TD-REVIEW, but leave Email blank.",Submission should be prevented by required-field validation.,Low,Negative / Validation,Later,P3,Exploratory validation derived from form constraints,https://www.automationexercise.com/test_cases
+TC-PROD-013,AEQA-2,Product Catalog & Discovery,AEQA-18,View Recommended Products,AC1,View recommended products,Verify Recommended Items section is visible,User is on the Home page.,1. Scroll to the bottom area of the Home page.,N/A,'RECOMMENDED ITEMS' is visible and recommended products are displayed.,Medium,Positive / UI,Later,P3,UI Test Case 22,https://www.automationexercise.com/test_cases
+TC-PROD-014,AEQA-2,Product Catalog & Discovery,AEQA-18,View Recommended Products,AC2,Add recommended product to cart,Verify a recommended product can be added to cart,Recommended Items section is visible.,"1. Click 'Add To Cart' on a recommended product.
+2. Click 'View Cart'.",Any recommended product,Selected recommended product is displayed in the Cart.,High,Positive / Functional,Yes,P1,UI Test Case 22,https://www.automationexercise.com/test_cases
+TC-CART-001,AEQA-3,Shopping Cart Management,AEQA-19,Add Products to Cart,AC1,Add one product to cart,Verify one product can be added to cart,User is viewing an available product.,"1. Click 'Add to cart'.
+2. Click 'View Cart'.",Any available product,Selected product is displayed in the Cart.,High,Positive / Functional,Later,P3,Derived from UI Test Case 12,https://www.automationexercise.com/test_cases
+TC-CART-002,AEQA-3,Shopping Cart Management,AEQA-19,Add Products to Cart,AC2,Add multiple products to cart,Verify two products are added with correct cart details,User is on the Products page.,"1. Add first product to cart.
+2. Click 'Continue Shopping'.
+3. Add second product.
+4. Click 'View Cart'.
+5. Verify both products.
+6. Verify price, quantity, and total.",First two available products,"Both products are present and their price, quantity, and total values are displayed correctly.",High,Positive / Functional,Yes,P1,UI Test Case 12,https://www.automationexercise.com/test_cases
+TC-CART-003,AEQA-3,Shopping Cart Management,AEQA-19,Add Products to Cart,AC2,Continue shopping after adding product,Verify Continue Shopping keeps previously added item,One product has just been added to cart.,"1. Click 'Continue Shopping'.
+2. Add a second product.
+3. Open Cart.",Two available products,Previously added product remains in the Cart together with the second product.,Medium,Positive / Regression,Later,P3,UI Test Case 12,https://www.automationexercise.com/test_cases
+TC-CART-004,AEQA-3,Shopping Cart Management,AEQA-20,Update Product Quantity,AC1,Add product with selected quantity,Verify selected quantity 4 is preserved in cart,User is on a Product Detail page.,"1. Set quantity to 4.
+2. Click 'Add to cart'.
+3. Click 'View Cart'.",Quantity: 4,Product is displayed in Cart with quantity exactly 4.,High,Positive / Functional,Yes,P1,UI Test Case 13,https://www.automationexercise.com/test_cases
+TC-CART-005,AEQA-3,Shopping Cart Management,AEQA-20,Update Product Quantity,AC1,Verify default quantity,Verify default quantity is carried to cart,User is on a Product Detail page.,"1. Leave quantity at its default value.
+2. Add product to cart.
+3. Open Cart.",Default quantity,Cart displays the same default quantity selected on Product Detail page.,Medium,Positive / Functional,Later,P3,Derived from Story/AC,https://www.automationexercise.com/test_cases
+TC-CART-006,AEQA-3,Shopping Cart Management,AEQA-21,Remove Product from Cart,AC1,Remove product from cart,Verify a product can be removed from the cart,Cart contains at least one product.,"1. Open Cart.
+2. Click the 'X' remove control for a product.",Any cart product,Selected product is removed and is no longer displayed in the Cart.,High,Positive / Functional,Yes,P1,UI Test Case 17,https://www.automationexercise.com/test_cases
+TC-CART-007,AEQA-3,Shopping Cart Management,AEQA-21,Remove Product from Cart,AC1,Remove one of multiple cart products,Verify removing one item does not remove other items,Cart contains at least two products.,"1. Remove one product using its 'X' control.
+2. Observe remaining cart contents.",Two or more cart products,Selected product is removed and the other product(s) remain in the Cart.,Medium,Positive / Regression,Later,P3,Derived from UI Test Case 17,https://www.automationexercise.com/test_cases
+TC-CART-008,AEQA-3,Shopping Cart Management,AEQA-22,Preserve Cart After Login,AC1,Preserve cart after login,Verify cart products remain after user logs in,"User is logged out.
+A registered account exists.","1. Search for a product.
+2. Add searched product(s) to cart.
+3. Open Cart and verify items.
+4. Click 'Signup / Login'.
+5. Login with valid credentials.
+6. Open Cart again.",Use TD-EXISTING + TD-SEARCH Keyword 1.,Products added before login remain visible in the Cart after successful login.,High,Positive / Regression,Yes,P1,UI Test Case 20,https://www.automationexercise.com/test_cases
+TC-CHK-001,AEQA-4,Checkout & Order Management,AEQA-24,Register During Checkout,"AC1, AC2",Register during checkout,Verify guest user can register during checkout and continue,User is logged out and Cart contains at least one product.,"1. Open Cart.
+2. Click 'Proceed To Checkout'.
+3. Click 'Register / Login'.
+4. Complete signup with valid unique data.
+5. Verify 'ACCOUNT CREATED!'.
+6. Click 'Continue'.
+7. Return to Cart.
+8. Click 'Proceed To Checkout'.",Use TD-REGISTER with a fresh email + any available product.,Registration succeeds and the user can return to the checkout flow; Address Details and Review Your Order are displayed.,High,Positive / E2E,Yes,P1,UI Test Case 14,https://www.automationexercise.com/test_cases
+TC-CHK-002,AEQA-4,Checkout & Order Management,AEQA-25,Checkout as Existing User,AC1,Checkout as logged-in user,Verify existing user can proceed from cart to checkout,"Registered user exists and is logged in.
+Cart contains at least one product.","1. Open Cart.
+2. Verify cart page.
+3. Click 'Proceed To Checkout'.",Use TD-EXISTING.,Checkout page is displayed with Address Details and Review Your Order.,High,Positive / E2E,Yes,P1,UI Test Case 16,https://www.automationexercise.com/test_cases
+TC-CHK-003,AEQA-4,Checkout & Order Management,AEQA-26,Verify Checkout Addresses,AC1,Verify delivery address,Verify delivery address matches registration data,"User registered with known address data, is logged in, and has proceeded to checkout.",1. Compare Delivery Address with registration address.,Use the TD-REGISTER address values used to create the account for this checkout flow.,Delivery Address matches the address entered during registration.,High,Positive / Data Integrity,Yes,P1,UI Test Case 23,https://www.automationexercise.com/test_cases
+TC-CHK-004,AEQA-4,Checkout & Order Management,AEQA-26,Verify Checkout Addresses,AC2,Verify billing address,Verify billing address matches registration data,"User registered with known address data, is logged in, and has proceeded to checkout.",1. Compare Billing Address with registration address.,Use the TD-REGISTER address values used to create the account for this checkout flow.,Billing Address matches the address entered during registration.,High,Positive / Data Integrity,Later,P3,UI Test Case 23,https://www.automationexercise.com/test_cases
+TC-CHK-005,AEQA-4,Checkout & Order Management,AEQA-27,Place Order and Payment,"AC1, AC2",Place order with valid payment,Verify user can complete order with valid payment data,"User is logged in, Cart contains product(s), and Checkout page is displayed.","1. Enter order comment.
+2. Click 'Place Order'.
+3. Enter Name on Card, Card Number, CVC, Expiration.
+4. Click 'Pay and Confirm Order'.",Use TD-ORDER Comment + TD-PAYMENT.,Payment is accepted and order success confirmation is displayed.,High,Positive / E2E,Yes,P1,UI Test Case 16,https://www.automationexercise.com/test_cases
+TC-CHK-006,AEQA-4,Checkout & Order Management,AEQA-27,Place Order and Payment,Derived,Validate payment form,Verify payment cannot be submitted when Card Number is empty,User is on the Payment page.,"1. Enter all payment fields except Card Number.
+2. Click 'Pay and Confirm Order'.","Use TD-PAYMENT, but leave Card Number blank.",Order should not be completed and required-field validation should prevent payment submission.,Medium,Negative / Validation,Later,P3,Exploratory validation derived from form constraints,https://www.automationexercise.com/test_cases
+TC-CHK-007,AEQA-4,Checkout & Order Management,AEQA-28,Download Invoice,AC1,Download invoice,Verify invoice can be downloaded after successful order,A purchase order was completed successfully.,"1. Click 'Download Invoice'.
+2. Confirm a file download is triggered.",Successful order from TC-CHK-005.,Invoice file downloads successfully.,High,Positive / Download,Yes,P1,UI Test Case 24,https://www.automationexercise.com/test_cases
+TC-CHK-008,AEQA-4,Checkout & Order Management,AEQA-28,Download Invoice,AC2,Continue after invoice download,Verify user can continue after downloading invoice,Invoice was downloaded successfully.,1. Click 'Continue'.,N/A,User can continue using the website after invoice download.,Medium,Positive / Navigation,Later,P3,UI Test Case 24,https://www.automationexercise.com/test_cases
+TC-SUP-001,AEQA-5,Customer Engagement & Support,AEQA-29,Contact Us,AC1,Submit contact request with attachment,Verify Contact Us form can be submitted with a file,User is on the Home page.,"1. Click 'Contact Us'.
+2. Verify 'GET IN TOUCH'.
+3. Enter name, email, subject, message.
+4. Upload a test file.
+5. Click 'Submit'.
+6. Confirm browser dialog if shown.",Use TD-CONTACT + TD-FILE.,'Success! Your details have been submitted successfully.' is displayed.,Medium,Positive / Functional,Yes,P1,UI Test Case 6,https://www.automationexercise.com/test_cases
+TC-SUP-002,AEQA-5,Customer Engagement & Support,AEQA-29,Contact Us,AC1,Submit contact request without attachment,Verify Contact Us form can be submitted without optional attachment,User is on the Contact Us page.,"1. Enter valid name, email, subject, message.
+2. Do not attach a file.
+3. Click 'Submit'.
+4. Confirm browser dialog if shown.",Use TD-CONTACT.,Contact request is submitted successfully and success confirmation is displayed.,Low,Positive / Functional,Later,P3,Derived from AC: attachment is optional,https://www.automationexercise.com/test_cases
+TC-SUP-003,AEQA-5,Customer Engagement & Support,AEQA-29,Contact Us,Derived,Validate contact form,Verify contact request is not submitted when Email is empty,User is on the Contact Us page.,"1. Enter name, subject, message.
+2. Leave Email empty.
+3. Click 'Submit'.","Use TD-CONTACT, but leave Email blank.",Submission should be prevented by required-field validation.,Low,Negative / Validation,Later,P3,Exploratory validation derived from form constraints,https://www.automationexercise.com/test_cases
+TC-SUB-001,AEQA-5,Customer Engagement & Support,AEQA-30,Email Subscription,AC1,Subscribe from Home page,Verify email subscription works from Home page,User is on the Home page.,"1. Scroll to footer.
+2. Verify 'SUBSCRIPTION'.
+3. Enter valid email.
+4. Click arrow button.",Use TD-SUBSCRIPTION Home Email.,'You have been successfully subscribed!' is displayed.,Medium,Positive / Functional,Yes,P1,UI Test Case 10,https://www.automationexercise.com/test_cases
+TC-SUB-002,AEQA-5,Customer Engagement & Support,AEQA-30,Email Subscription,AC2,Subscribe from Cart page,Verify email subscription works from Cart page,User is on the Cart page.,"1. Scroll to footer.
+2. Verify 'SUBSCRIPTION'.
+3. Enter valid email.
+4. Click arrow button.",Use TD-SUBSCRIPTION Cart Email.,'You have been successfully subscribed!' is displayed.,Medium,Positive / Functional,Later,P3,UI Test Case 11,https://www.automationexercise.com/test_cases
+TC-SUB-003,AEQA-5,Customer Engagement & Support,AEQA-30,Email Subscription,Derived,Validate subscription email,Verify subscription does not accept empty email,Subscription section is visible.,"1. Leave subscription email empty.
+2. Click arrow button.",Leave subscription Email blank.,Subscription should not complete and required-field validation should prevent submission.,Low,Negative / Validation,Later,P3,Exploratory validation derived from form constraints,https://www.automationexercise.com/test_cases
+TC-NAV-001,AEQA-6,Navigation & UI Behavior,AEQA-31,Access Test Cases Page,AC1,Navigate to Test Cases page,Verify Test Cases navigation opens the Test Cases page,User is on the Home page.,1. Click 'Test Cases'.,N/A,User is navigated to the Test Cases page successfully.,Medium,Positive / Navigation,Yes,P1,UI Test Case 7,https://www.automationexercise.com/test_cases
+TC-NAV-003,AEQA-6,Navigation & UI Behavior,AEQA-32,Scroll to Top Using Arrow,AC2,Return to top using arrow,Verify scroll-to-top arrow moves user back to top,User is near the bottom of Home page and scroll-to-top arrow is visible.,1. Click the scroll-to-top arrow.,N/A,Page scrolls to the top and 'Full-Fledged practice website for Automation Engineers' is visible.,Low,Positive / UI,Later,P3,UI Test Case 25,https://www.automationexercise.com/test_cases
+TC-API-001,AEQA-7,API Testing,AEQA-34,Product APIs,AC1,Retrieve product list,Verify GET /api/productsList returns all products,API is reachable.,"1. Send GET request to /api/productsList.
+2. Inspect response.","Method: GET
+Endpoint: /api/productsList",Response code is 200 and response contains the products list.,High,API / Functional,Yes,P1,API 1: Get All Products List,https://www.automationexercise.com/api_list
+TC-API-002,AEQA-7,API Testing,AEQA-34,Product APIs,AC2,Unsupported product-list method,Verify POST /api/productsList is rejected,API is reachable.,"1. Send POST request to /api/productsList.
+2. Inspect response.","Method: POST
+Endpoint: /api/productsList",Response code is 405 and message is 'This request method is not supported.'.,High,API / Functional,Yes,P2,API 2: POST To All Products List,https://www.automationexercise.com/api_list
+TC-API-003,AEQA-7,API Testing,AEQA-35,Brand APIs,AC1,Retrieve brand list,Verify GET /api/brandsList returns all brands,API is reachable.,"1. Send GET request to /api/brandsList.
+2. Inspect response.","Method: GET
+Endpoint: /api/brandsList",Response code is 200 and response contains the brands list.,High,API / Functional,Yes,P1,API 3: Get All Brands List,https://www.automationexercise.com/api_list
+TC-API-004,AEQA-7,API Testing,AEQA-35,Brand APIs,AC2,Unsupported brands method,Verify PUT /api/brandsList is rejected,API is reachable.,"1. Send PUT request to /api/brandsList.
+2. Inspect response.","Method: PUT
+Endpoint: /api/brandsList",Response code is 405 and message is 'This request method is not supported.'.,High,API / Functional,Yes,P2,API 4: PUT To All Brands List,https://www.automationexercise.com/api_list
+TC-API-005,AEQA-7,API Testing,AEQA-36,Product Search API,AC1,Search products with valid parameter,Verify POST /api/searchProduct returns matching products,API is reachable.,"1. Send POST request to /api/searchProduct with search_product.
+2. Inspect response.","Method: POST
+Endpoint: /api/searchProduct
+Use TD-SEARCH Keyword 1 as search_product.",Response code is 200 and response contains searched products.,High,API / Functional,Yes,P1,API 5: POST To Search Product,https://www.automationexercise.com/api_list
+TC-API-006,AEQA-7,API Testing,AEQA-36,Product Search API,AC2,Search products without required parameter,Verify POST /api/searchProduct without search_product returns 400,API is reachable.,"1. Send POST request to /api/searchProduct without search_product.
+2. Inspect response.","Method: POST
+Endpoint: /api/searchProduct
+No search_product parameter",Response code is 400 and message states search_product parameter is missing.,High,API / Functional,Yes,P2,API 6: POST To Search Product without search_product parameter,https://www.automationexercise.com/api_list
+TC-API-007,AEQA-7,API Testing,AEQA-37,Login Verification API,AC1,Verify valid credentials,Verify login API returns User exists for valid credentials,A registered API test user exists.,"1. Send POST request to /api/verifyLogin with valid email/password.
+2. Inspect response.","Method: POST
+Endpoint: /api/verifyLogin
+Use TD-EXISTING credentials.",Response code is 200 and message is 'User exists!'.,High,API / Functional,Yes,P1,API 7: POST To Verify Login with valid details,https://www.automationexercise.com/api_list
+TC-API-008,AEQA-7,API Testing,AEQA-37,Login Verification API,AC3,Missing required credentials,Verify login API returns 400 when email is missing,API is reachable.,"1. Send POST request to /api/verifyLogin with password only.
+2. Inspect response.","Method: POST
+Endpoint: /api/verifyLogin
+Email: omitted
+Use TD-EXISTING Password.",Response code is 400 and message states email or password parameter is missing.,High,API / Functional,Yes,P2,API 8: POST To Verify Login without email parameter,https://www.automationexercise.com/api_list
+TC-API-009,AEQA-7,API Testing,AEQA-37,Login Verification API,AC4,Unsupported HTTP method,Verify DELETE /api/verifyLogin is rejected,API is reachable.,"1. Send DELETE request to /api/verifyLogin.
+2. Inspect response.","Method: DELETE
+Endpoint: /api/verifyLogin",Response code is 405 and message is 'This request method is not supported.'.,High,API / Functional,Yes,P2,API 9: DELETE To Verify Login,https://www.automationexercise.com/api_list
+TC-API-010,AEQA-7,API Testing,AEQA-37,Login Verification API,AC2,Verify invalid credentials,Verify login API returns user-not-found for invalid credentials,API is reachable.,"1. Send POST request to /api/verifyLogin with invalid email/password.
+2. Inspect response.","Method: POST
+Endpoint: /api/verifyLogin
+Use TD-NEGATIVE Unregistered Email + TD-NEGATIVE Wrong Password.",Response code is 404 and message is 'User not found!'.,High,API / Functional,Yes,P2,API 10: POST To Verify Login with invalid details,https://www.automationexercise.com/api_list
+TC-API-011,AEQA-7,API Testing,AEQA-38,User Account APIs,AC1,Create account,Verify POST /api/createAccount creates a new user,Email has not been registered before.,"1. Send POST request to /api/createAccount with all required account fields.
+2. Inspect response.","Method: POST
+Endpoint: /api/createAccount
+Use TD-API with a fresh email + TD-REGISTER profile/address values.",Response code is 201 and message is 'User created!'.,High,API / Functional,Yes,P1,API 11: POST To Create/Register User Account,https://www.automationexercise.com/api_list
+TC-API-012,AEQA-7,API Testing,AEQA-38,User Account APIs,AC2,Retrieve account,Verify GET /api/getUserDetailByEmail returns user detail,API test account exists.,"1. Send GET request to /api/getUserDetailByEmail with registered email.
+2. Inspect response.","Method: GET
+Endpoint: /api/getUserDetailByEmail
+Use the email created by TC-API-011.",Response code is 200 and response contains the expected user detail.,High,API / Functional,Yes,P1,API 14: GET user account detail by email,https://www.automationexercise.com/api_list
+TC-API-013,AEQA-7,API Testing,AEQA-38,User Account APIs,AC3,Update account,Verify PUT /api/updateAccount updates an existing user,API test account exists.,"1. Send PUT request to /api/updateAccount with required fields and changed data.
+2. Inspect response.","Method: PUT
+Endpoint: /api/updateAccount
+Use the account from TC-API-011 + TD-API Updated Company + TD-REGISTER profile/address values.",Response code is 200 and message is 'User updated!'.,High,API / Functional,Yes,P1,API 13: PUT METHOD To Update User Account,https://www.automationexercise.com/api_list
+TC-API-014,AEQA-7,API Testing,AEQA-38,User Account APIs,AC4,Delete account,Verify DELETE /api/deleteAccount deletes an existing user,API test account exists.,"1. Send DELETE request to /api/deleteAccount with email/password.
+2. Inspect response.","Method: DELETE
+Endpoint: /api/deleteAccount
+Use credentials from TC-API-011.",Response code is 200 and message is 'Account deleted!'.,High,API / Functional,Yes,P1,API 12: DELETE METHOD To Delete User Account,https://www.automationexercise.com/api_list
