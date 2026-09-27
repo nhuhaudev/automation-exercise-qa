@@ -1,0 +1,2 @@
+AEQA synthetic contact-form attachment.
+This file is test data and contains no personal information or credentials.
