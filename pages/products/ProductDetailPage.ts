@@ -1,5 +1,7 @@
 import { expect, type Locator, type Page } from '@playwright/test';
 import type { ReviewData } from '../../test-data/products';
+import { AddToCartModal } from '../common/AddToCartModal';
+import { clickWhenReady } from '../common/clickWhenReady';
 
 export class ProductDetailPage {
   private readonly information: Locator;
@@ -13,6 +15,23 @@ export class ProductDetailPage {
   async expectOpen(): Promise<void> {
     await expect(this.page).toHaveURL(/\/product_details\/\d+$/);
     await expect(this.information).toBeVisible();
+  }
+
+  async setQuantity(quantity: number): Promise<void> {
+    await this.information.getByRole('spinbutton').fill(String(quantity));
+  }
+
+  async getQuantity(): Promise<number> {
+    const quantity = Number(await this.information.getByRole('spinbutton').inputValue());
+    expect(quantity).toBeGreaterThan(0);
+    return quantity;
+  }
+
+  async addToCart(): Promise<string> {
+    const productId = await this.information.locator('#product_id').inputValue();
+    await clickWhenReady(this.information.getByRole('button', { name: 'Add to cart' }));
+    await new AddToCartModal(this.page).expectAdded();
+    return productId;
   }
 
   async expectCoreInformation(): Promise<void> {
