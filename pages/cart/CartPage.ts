@@ -5,6 +5,18 @@ import { clickWhenReady } from '../common/clickWhenReady';
 export class CartPage {
   constructor(private readonly page: Page) {}
 
+  async proceedToCheckout(): Promise<void> {
+    await expect(this.page).toHaveURL(/\/view_cart$/);
+    // This anchor has no href; both guest and signed-in checkout need its jQuery handler.
+    await clickWhenReady(this.page.getByText('Proceed To Checkout', { exact: true }));
+  }
+
+  async registerFromCheckout(): Promise<void> {
+    const modal = this.page.locator('#checkoutModal');
+    await expect(modal).toBeVisible();
+    await modal.getByRole('link', { name: 'Register / Login' }).click();
+  }
+
   async removeProduct(productId: string): Promise<void> {
     await this.expectProduct(productId);
     await clickWhenReady(this.page.locator(`#product-${productId} .cart_quantity_delete`));
