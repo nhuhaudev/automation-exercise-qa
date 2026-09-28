@@ -24,6 +24,10 @@ export class SiteHeader {
     await this.page.locator('header').getByRole('link', { name: /Contact us/i }).click();
   }
 
+  async openTestCases(): Promise<void> {
+    await this.page.locator('header').getByRole('link', { name: /Test Cases/ }).click();
+  }
+
   async expectLoggedInAs(name: string): Promise<void> {
     await expect(this.page.getByText(`Logged in as ${name}`)).toBeVisible();
   }
